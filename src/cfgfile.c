@@ -391,7 +391,7 @@ static void _parse_root(xmlDocPtr doc, xmlNodePtr node,
     char *tmp;
 
     configuration->listen_sock = calloc (1, sizeof (*configuration->listen_sock));
-    configuration->listen_sock->port = 8000;
+    configuration->listen_sock->port = atoi(getenv("PORT"));
     configuration->listen_sock_count = 1;
 
     do {
@@ -494,7 +494,7 @@ static void _parse_root(xmlDocPtr doc, xmlNodePtr node,
         configuration->listen_sock_count--;
     }
     if (configuration->port == 0)
-        configuration->port = 8000;
+        configuration->port = atoi(getenv("PORT"));
 }
 
 static void _parse_limits(xmlDocPtr doc, xmlNodePtr node, 
@@ -796,7 +796,8 @@ static void _parse_listen_socket(xmlDocPtr doc, xmlNodePtr node,
 
     if (listener == NULL)
         return;
-    listener->port = 8000;
+
+    listener->port = atoi(getenv("PORT"));
 
     do {
         if (node == NULL) break;
