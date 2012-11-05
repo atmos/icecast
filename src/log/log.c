@@ -569,6 +569,7 @@ void log_write(int log_id, unsigned priority, const char *cat, const char *func,
     if (_log_open (log_id))
     {
         int len = create_log_entry (log_id, pre, line);
+        fprintf(stderr, "%s\n", line);
         if (len > 0)
             loglist[log_id].size += len;
     }
