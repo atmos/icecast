@@ -460,8 +460,8 @@ int fserve_client_create (client_t *httpclient, const char *path)
             snprintf (httpclient->refbuf->data, BUFSIZE,
                     "HTTP/1.0 200 OK\r\n"
                     "Content-Type: audio/x-mpegurl\r\n\r\n"
-                    "http://%s:%d%s\r\n", 
-                    config->hostname, config->port,
+                    "http://%s%s\r\n",
+                    config->hostname,
                     sourceuri
                     );
             config_release_config();

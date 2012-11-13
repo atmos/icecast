@@ -703,11 +703,10 @@ static void command_buildm3u(client_t *client,  const char *mount)
         "HTTP/1.0 200 OK\r\n"
         "Content-Type: audio/x-mpegurl\r\n"
         "Content-Disposition = attachment; filename=listen.m3u\r\n\r\n" 
-        "http://%s:%s@%s:%d%s\r\n",
+        "http://%s:%s@%s%s\r\n",
         username,
         password,
         config->hostname,
-        config->port,
         mount
     );
     config_release_config();

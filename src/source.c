@@ -593,8 +593,8 @@ static void source_init (source_t *source)
 
     listenurl = malloc (listen_url_size);
     memset (listenurl, '\000', listen_url_size);
-    snprintf (listenurl, listen_url_size, "http://%s:%d%s",
-            config->hostname, config->port, source->mount);
+    snprintf (listenurl, listen_url_size, "http://%s%s",
+            config->hostname, source->mount);
     config_release_config();
 
     str = httpp_getvar(source->parser, "ice-audio-info");
